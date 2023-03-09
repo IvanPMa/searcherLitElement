@@ -32,23 +32,28 @@ export class MyElement extends LitElement {
   setWord(detail){
     this.word = detail;
     console.log(this.word);
-    this.apiRequest(this.data).then(()=>console.log(this.data));
+    this.apiRequest().then(()=>console.log(this.data));
     
     // console.log(this.data);
   }
   apiRequest =  async ()=> {
     try {
-      const url = "https://rickandmortyapi.com/api/character";
       const info = [];
-      const response = await fetch (url);
-      const result = await response.json();
-  
-      for (let i in result.results) {
-        info.push(result.results[i])
+      for (let i = 1 ; i <= 42 ; i++){
+        const url = "https://rickandmortyapi.com/api/character?page="+i;
+        const response = await fetch (url);
+        const result = await response.json();
+    
+        for (let i in result.results) {
+          info.push(result.results[i])
+          
+        } 
+
+        let infoFilter = info.filter( element =>  {
+          return (element.name.toLowerCase().includes(this.word.toLowerCase()) == true)})
+        this.data = infoFilter;
+      }
         
-      } 
-      this.data = info;
-      
   
     } catch (e){
       console.error(e)
