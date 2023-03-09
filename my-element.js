@@ -9,39 +9,17 @@ export class MyElement extends LitElement {
 
   static get properties() {
     return {
-      word : {
-        type : String
-      },
-      data : {
-        type : Array
-      },
-      image : {
-        type: String
-      },
-      name : {
-        type: String
-      },
-      typeCharacter : {
-        type : String
-      },
-      id : {
-        type : Number
-      },
-      specie : {
-        type : String
-      },
-      status : {
-        type : String
-      },
-      gender : {
-        type : String
-      },
-      origin : {
-        type : String
-      },
-      location : {
-        type : String
-      }
+      word : { type : String },
+      data : { type : Array },
+      image : { type: String },
+      name : { type: String },
+      typeCharacter : { type : String },
+      id : { type : Number },
+      specie : { type : String },
+      status : { type : String },
+      gender : { type : String },
+      origin : { type : String },
+      location : { type : String }
     };
   }
 
@@ -89,6 +67,14 @@ export class MyElement extends LitElement {
         let infoFilter = info.filter( element =>  {
           return (element.name.toLowerCase().includes(this.word.toLowerCase()) == true)})
         this.data = infoFilter;
+        this.image = this.data[0].image;
+        this.name = this.data[0].name;
+        this.typeCharacter = this.data[0].type;
+        this.specie = this.data[0].species;
+        this.status = this.data[0].status;
+        this.gender = this.data[0].gender;
+        this.origin = this.data[0].origin.name;
+        this.location = this.data[0].location.name;
       }
         
   
