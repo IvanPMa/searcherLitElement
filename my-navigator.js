@@ -9,30 +9,33 @@ export class Navigator extends LitElement {
 
   static get properties() {
     return {
-      
+      name : {
+        type : String
+      },
+      info : {
+        type : Array
+      }
     };
   }
 
   constructor() {
     super();
-    
+    this.name = '';
+    this.info = [];
   }
 
   render() {
     return html`
       <h2 class="title">Characters</h2>
       <div class="select-section">
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        <button class="section-button">Rick</button>
-        
+        ${this.info.map(
+          (element)=>
+            html`
+              <button class="section-button">
+                ${element.name}
+              </button>   
+            `
+        )}
         
       </div>
 
