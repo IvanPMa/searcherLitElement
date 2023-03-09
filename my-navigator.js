@@ -24,6 +24,15 @@ export class Navigator extends LitElement {
     this.info = [];
   }
 
+  onClickButton(id){
+    console.log("Boton presionado");
+    this.dispatchEvent( new CustomEvent('click-button',{
+      detail: id,
+      composed : true,
+      bubbles: true
+    }))
+  }  
+
   render() {
     return html`
       <h2 class="title">Characters</h2>
@@ -31,7 +40,11 @@ export class Navigator extends LitElement {
         ${this.info.map(
           (element)=>
             html`
-              <button class="section-button">
+              <button 
+                class="section-button"
+                id=${element.id}
+                @click=${()=>this.onClickButton(element.id)}
+                >
                 ${element.name}
               </button>   
             `

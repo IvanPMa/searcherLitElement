@@ -63,13 +63,16 @@ export class MyElement extends LitElement {
     
   }
   
-
+  captureButton(event){
+    console.log(event)
+  }
   
   render() {
     return html`
       <my-navigator 
         class="selector"
         .info="${this.data}"
+        @click-button =${this.captureButton}
       >
       </my-navigator>
       
