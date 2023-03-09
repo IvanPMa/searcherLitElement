@@ -41,10 +41,10 @@ export class Card extends LitElement {
 
   constructor() {
     super();
-    this.image ='https://rickandmortyapi.com/api/character/avatar/1.jpeg';
+    this.image ='';
     this.name ='';
     this.typeCharacter ='';
-    this.id ='';
+    this.id = 0;
     this.specie ='';
     this.status ='';
     this.gender ='';
@@ -55,14 +55,19 @@ export class Card extends LitElement {
 
   render() {
     return html`
-      <img src="${this.image}" alt="${this.name}" />
-
-      <div class="card-section">
-        <h2>${this.name}Rick Sanchez</h2>
-
-        <div class="card-info">
-          lorem impsum
+      <div class="card-header">
+        <img src="${this.image}" alt="${this.name}" />
+        <div class="card-section">
+          <h2>${this.name}</h2>
+          <div>${this.location}</div>
         </div>
+      </div>
+      <div class="card-info">
+        <div><span class="title">Origin: </span>${this.origin}</div>
+        <div><span>Specie: </span>${this.specie}</div>
+        <div><span>ID: </span>${this.id}</div>
+        <div><span>Type: </span>${this.typeCharacter}</div>
+        <div><span>Gender: </span>${this.gender}</div>
       </div>
     `;
   }

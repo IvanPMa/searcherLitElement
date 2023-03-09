@@ -46,9 +46,8 @@ export const styles = css`
         border-radius: 20px;
     }
     :host .card{
-        
+        height: 65%;
         font-size: 20px;
-        height: 250px;
         border-radius: 20px;
     }
 `;

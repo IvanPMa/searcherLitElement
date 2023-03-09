@@ -14,6 +14,33 @@ export class MyElement extends LitElement {
       },
       data : {
         type : Array
+      },
+      image : {
+        type: String
+      },
+      name : {
+        type: String
+      },
+      typeCharacter : {
+        type : String
+      },
+      id : {
+        type : Number
+      },
+      specie : {
+        type : String
+      },
+      status : {
+        type : String
+      },
+      gender : {
+        type : String
+      },
+      origin : {
+        type : String
+      },
+      location : {
+        type : String
       }
     };
   }
@@ -22,6 +49,16 @@ export class MyElement extends LitElement {
     super();
     this.word = '';
     this.data = [];
+
+    this.image ='';
+    this.name ='';
+    this.typeCharacter ='';
+    this.id = 0;
+    this.specie ='';
+    this.status ='';
+    this.gender ='';
+    this.origin ='';
+    this.location ='';
   }
 
   searchEvent(event){
@@ -64,8 +101,28 @@ export class MyElement extends LitElement {
   }
   
   captureButton(event){
-    console.log(event)
+    // console.log("Button ID:",event.detail)
+    this.id = event.detail;
+    console.log(this.id);
+    this.extractSelection(this.id)
   }
+
+  extractSelection(id){
+    let character = this.data.filter( element =>  {
+      return (element.id == id)})
+    console.log(character);
+    this.image = character[0].image;
+    this.name = character[0].name;
+    this.typeCharacter = character[0].type;
+    this.specie = character[0].species;
+    this.status = character[0].status;
+    this.gender = character[0].gender;
+    this.origin = character[0].origin.name;
+    this.location = character[0].location.name;
+    console.log(this.name)
+    
+  }
+
   
   render() {
     return html`
@@ -80,7 +137,18 @@ export class MyElement extends LitElement {
           <my-search class="search"
             @input-search=${this.searchEvent}
           ></my-search>
-          <my-card class= "card"></my-card>
+          <my-card 
+            class= "card"
+            .image="${this.image}"
+            .name="${this.name}"
+            .typeCharacter="${this.typeCharacter}"
+            .id="${this.id}"
+            .specie="${this.specie}"
+            .status="${this.status}"
+            .gender="${this.gender}"
+            .origin="${this.origin}"
+            .location="${this.location}"
+          ></my-card>
       </div>
       
     `;
