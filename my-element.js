@@ -144,6 +144,18 @@ export class MyElement extends LitElement {
     console.log(newInfo);
   }
 
+  capturePrev(){
+    // console.log(event)
+    if(this.currentPage >1){
+      this.currentPage = this.currentPage -1;
+    }
+  }
+  captureNext(){
+    // console.log(event)
+    if(this.currentPage < this.pages){
+      this.currentPage = this.currentPage + 1;
+    }
+  }
   
   render() {
     return html`
@@ -153,6 +165,8 @@ export class MyElement extends LitElement {
         .pages="${this.pages}"
         .currentPage="${this.currentPage}"
         @click-button =${this.captureButton}
+        @prev-button =${this.capturePrev}
+        @next-button =${this.captureNext}
       >
       </my-navigator>
       

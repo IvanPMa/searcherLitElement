@@ -34,6 +34,18 @@ export class Navigator extends LitElement {
     }))
   }
 
+  prevButton(){
+    console.log("Prev button clicked")
+    this.dispatchEvent( new CustomEvent('prev-button',{
+      detail: 'Prev Page'
+    }))
+  }
+  nextButton(){
+    console.log("Next button clicked")
+    this.dispatchEvent( new CustomEvent('next-button',{
+      detail: 'Next Page'
+    }))
+  }
 
   render() {
     return html`
@@ -55,9 +67,15 @@ export class Navigator extends LitElement {
       </div>
 
       <div class="pagination">
-        <button class="button-page"><</button>
+        <button
+          class="button-page"
+          @click = ${()=> this.prevButton()}
+        ><</button>
         <p class="text-page">${this.currentPage} of ${this.pages}</p>
-        <button class="button-page">></button>
+        <button 
+          class="button-page"
+          @click = ${()=> this.nextButton()}
+          >></button>
       </div>
     `;
   }
