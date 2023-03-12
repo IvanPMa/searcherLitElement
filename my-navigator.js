@@ -9,12 +9,11 @@ export class Navigator extends LitElement {
 
   static get properties() {
     return {
-      name : {
-        type : String
-      },
-      info : {
-        type : Array
-      }
+      name : { type : String },
+      info : { type : Array },
+      pages : { type : Number },
+      currentPage: {type :Number},
+      infoPage : {type: Array}
     };
   }
 
@@ -22,6 +21,8 @@ export class Navigator extends LitElement {
     super();
     this.name = '';
     this.info = [];
+    this.pages = 0;
+    this.currentPage = 0;
   }
 
   onClickButton(id){
@@ -31,7 +32,8 @@ export class Navigator extends LitElement {
       composed : true,
       bubbles: true
     }))
-  }  
+  }
+
 
   render() {
     return html`
@@ -54,7 +56,7 @@ export class Navigator extends LitElement {
 
       <div class="pagination">
         <button class="button-page"><</button>
-        <p class="text-page">page 1 of 5</p>
+        <p class="text-page">page 1 of ${this.pages}</p>
         <button class="button-page">></button>
       </div>
     `;

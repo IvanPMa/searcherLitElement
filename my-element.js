@@ -19,7 +19,8 @@ export class MyElement extends LitElement {
       status : { type : String },
       gender : { type : String },
       origin : { type : String },
-      location : { type : String }
+      location : { type : String },
+      pages : { type:Number},
     };
   }
 
@@ -37,6 +38,8 @@ export class MyElement extends LitElement {
     this.gender ='';
     this.origin ='';
     this.location ='';
+    this.pages = 0;
+    
   }
 
   searchEvent(event){
@@ -47,7 +50,7 @@ export class MyElement extends LitElement {
   setWord(detail){
     this.word = detail;
     console.log(this.word);
-    this.apiRequest().then(()=>console.log(this.data));
+    this.apiRequest().then(()=>this.setPagination());
     
     // console.log(this.data);
   }
@@ -106,7 +109,33 @@ export class MyElement extends LitElement {
     this.origin = character[0].origin.name;
     this.location = character[0].location.name;
     console.log(this.name)
+  }
+
+  setPagination = ()=>{
+    let newInfo = [];
+    let sizePages = Math.ceil(this.data.length / 20);
+    //Create pages
+    for (let i = 0 ; i < sizePages; i++){
+      newInfo.push([])
+    }
     
+    //Insert Data on pages
+    let counter = 0, flag = 1;
+    for (let i = 0 ; i < this.data.length; i++){
+      newInfo[counter].push(this.data[i]);
+      
+      if (flag === 20){
+        flag = 0;
+        counter ++;
+      }
+
+      flag ++;
+    }
+    this.pages = newInfo.length;
+    // this.data = newInfo;
+    console.log(this.pages)
+    console.log(this.data.length);
+    console.log(newInfo);
   }
 
   
@@ -115,6 +144,7 @@ export class MyElement extends LitElement {
       <my-navigator 
         class="selector"
         .info="${this.data}"
+        .pages="${this.pages}"
         @click-button =${this.captureButton}
       >
       </my-navigator>
