@@ -56,7 +56,7 @@ export class Navigator extends LitElement {
 
       <div class="pagination">
         <button class="button-page"><</button>
-        <p class="text-page">page 1 of ${this.pages}</p>
+        <p class="text-page">${this.currentPage} of ${this.pages}</p>
         <button class="button-page">></button>
       </div>
     `;

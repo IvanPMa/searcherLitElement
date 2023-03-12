@@ -21,6 +21,7 @@ export class MyElement extends LitElement {
       origin : { type : String },
       location : { type : String },
       pages : { type:Number},
+      currentPage : { type : Number}
     };
   }
 
@@ -39,6 +40,7 @@ export class MyElement extends LitElement {
     this.origin ='';
     this.location ='';
     this.pages = 0;
+    this.currentPage = 0;
     
   }
 
@@ -69,6 +71,7 @@ export class MyElement extends LitElement {
 
         let infoFilter = info.filter( element =>  {
           return (element.name.toLowerCase().includes(this.word.toLowerCase()) == true)})
+        // Set Default firts selection
         this.data = infoFilter;
         this.image = this.data[0].image;
         this.name = this.data[0].name;
@@ -78,6 +81,9 @@ export class MyElement extends LitElement {
         this.gender = this.data[0].gender;
         this.origin = this.data[0].origin.name;
         this.location = this.data[0].location.name;
+
+        this.currentPage = 1;
+        
       }
         
   
@@ -145,6 +151,7 @@ export class MyElement extends LitElement {
         class="selector"
         .info="${this.data}"
         .pages="${this.pages}"
+        .currentPage="${this.currentPage}"
         @click-button =${this.captureButton}
       >
       </my-navigator>
