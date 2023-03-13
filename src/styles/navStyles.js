@@ -37,10 +37,14 @@ export const navStyles = css`
         color: white;
         border-radius : 20px;
         overflow: hidden;
-        transition: all .3s;
+        transition: box-shadow .3s, border 0s;
     }
     :host .select-section .section-button:hover{
         box-shadow: 0px 0px 10px #80ba3d;
+    }
+    :host .select-section .section-button:focus{
+        box-shadow: 0px 0px 10px #80ba3d;
+        border: 3px dotted white;
     }
     :host .pagination{
         width: 70%;
