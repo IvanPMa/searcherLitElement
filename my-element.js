@@ -81,8 +81,6 @@ export class MyElement extends LitElement {
         this.gender = this.data[0].gender;
         this.origin = this.data[0].origin.name;
         this.location = this.data[0].location.name;
-
-        this.currentPage = 1;
         
       }
         
@@ -146,7 +144,7 @@ export class MyElement extends LitElement {
 
   capturePrev(){
     // console.log(event)
-    if(this.currentPage >1){
+    if(this.currentPage > 0){
       this.currentPage = this.currentPage -1;
     }
   }

@@ -47,6 +47,12 @@ export class Navigator extends LitElement {
     }))
   }
 
+  showCurrenPage(){
+    if (this.pages > 0 && this.currentPage != this.pages)
+      return html`${this.currentPage+1}`
+    else 
+      return html`${this.currentPage}`
+  }
   render() {
     return html`
       <h2 class="title">Characters</h2>
@@ -71,7 +77,7 @@ export class Navigator extends LitElement {
           class="button-page"
           @click = ${()=> this.prevButton()}
         ><</button>
-        <p class="text-page">${this.currentPage} of ${this.pages}</p>
+        <p class="text-page">${this.showCurrenPage()}  of ${this.pages}</p>
         <button 
           class="button-page"
           @click = ${()=> this.nextButton()}
