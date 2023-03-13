@@ -14,13 +14,11 @@ export const navStyles = css`
         height:10vh;
     }
     :host .select-section{
-        
         width :80%;
-        /* height: 80vh; */
+        height: 80vh;
         display: flex;
         flex-direction: column;
         padding: 10px;
-        /* padding-top: 600px; */
         margin: auto;
         overflow-y: scroll;
         justify-content: space-between;
