@@ -2,9 +2,11 @@ import {css} from 'lit';
 
 export const cardStyles = css`
     :host {
-        width: 98%;
+        width: 100%;
         display: flex;
-        padding: 8px;
+        /* padding: 8px; */
+        background: linear-gradient(to left,#051918,#31d514 160%,#102422);
+        
     }
     :host .card-header {
         width: 40%;

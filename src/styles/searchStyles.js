@@ -4,6 +4,7 @@ export const searchStyles = css`
     :host {
         width: 100%;
         display: flex;
+        /* background-color: #31d514; */
         
     }
 

@@ -28,7 +28,7 @@ export const styles = css`
         color:white; 
     }
     :host .card , .search{
-        background-color: #31d514;
+        
         border: 1px solid #017e3c;
         box-shadow: 0px 0px 5px #80ba3d;
         transition: all .5s;
