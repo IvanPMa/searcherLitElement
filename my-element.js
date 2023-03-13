@@ -101,7 +101,7 @@ export class MyElement extends LitElement {
   }
 
   extractSelection(id){
-    let character = this.data.filter( element =>  {
+    let character = this.data[this.currentPage].filter( element =>  {
       return (element.id == id)})
     console.log(character);
     this.image = character[0].image;
@@ -136,7 +136,7 @@ export class MyElement extends LitElement {
       flag ++;
     }
     this.pages = newInfo.length;
-    // this.data = newInfo;
+    this.data = newInfo;
     console.log(this.pages)
     console.log(this.data.length);
     console.log(newInfo);
@@ -159,7 +159,7 @@ export class MyElement extends LitElement {
     return html`
       <my-navigator 
         class="selector"
-        .info="${this.data}"
+        .info="${this.data[this.currentPage]}"
         .pages="${this.pages}"
         .currentPage="${this.currentPage}"
         @click-button =${this.captureButton}
