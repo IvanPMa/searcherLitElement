@@ -3,6 +3,7 @@ import {css} from 'lit';
 export const navStyles = css`
     :host {
         width: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
     }
@@ -10,18 +11,19 @@ export const navStyles = css`
         width: 100%;
         text-align: center;
         font-size: 30px;
-        height: 10%;
+        height:10vh;
     }
     :host .select-section{
         
         width :80%;
-        height: 80%;
+        /* height: 80vh; */
         display: flex;
         flex-direction: column;
         padding: 10px;
+        /* padding-top: 600px; */
         margin: auto;
         overflow-y: scroll;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
     :host .select-section .section-button{
         margin: auto;
@@ -44,7 +46,7 @@ export const navStyles = css`
     }
     :host .pagination{
         width: 70%;
-        height: 10%;
+        height: 10vh;
         display: flex;
         margin: auto;
         
