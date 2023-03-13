@@ -46,7 +46,7 @@ export class Search extends LitElement {
           type = "text"
           .value = "${this.word}"
           @input ="${this.setInfo}"
-          placeholder = "Search"
+          placeholder = "Search a character!"
         /> 
       </form>
     `;

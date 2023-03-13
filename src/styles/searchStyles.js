@@ -17,6 +17,7 @@ export const searchStyles = css`
         border-radius: 10px;
         padding: 0px 10px;
         font-size: 15px;
+        font-weight: bold;
         background-color: transparent;
         color: white;
         border : none;
