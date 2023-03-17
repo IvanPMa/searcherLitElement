@@ -79,7 +79,7 @@ export class Navigator extends LitElement {
           class="button-page"
           @click = ${()=> this.prevButton()}
         ><</button>
-        <p class="text-page">${this.showCurrenPage()}  of ${this.pages}</p>
+        <p class="text-page">${this.currentPage} of ${this.pages}</p>
         <button 
           class="button-page"
           @click = ${()=> this.nextButton()}

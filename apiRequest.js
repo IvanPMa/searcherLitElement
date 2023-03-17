@@ -18,8 +18,7 @@ export const apiRequest =  async (word)=> {
     }))
 
     const totalPages = result.info.pages;
-    console.log(info)
-    console.log(totalPages)
+    console.log(result)
     return [info, totalPages];
 
   } catch (e){
@@ -28,4 +27,31 @@ export const apiRequest =  async (word)=> {
     console.log('apiRequest Finished')
   }
   
+}
+
+export const reloadInfo = async (word,page) =>{
+  try{
+    const url = `https://rickandmortyapi.com/api/character?name=${word}&page=${page}`;
+    const response = await fetch (url);
+    const result = await response.json();
+
+    const info = result.results.map(element =>({
+      image: element.image,
+      name: element.name,
+      typeCharacter: element.name,
+      id: element.id,
+      specie : element.species,
+      status : element.satus,
+      gender : element.gender,
+      origin : element.origin.name,
+      location : element.location.name
+    }))
+    console.log(result);
+    return info;
+
+  } catch (e){
+    console.error(e)
+  } finally{
+    console.log('apiRequest Finished')
+  }
 }

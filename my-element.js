@@ -1,5 +1,5 @@
 import {LitElement, html} from 'lit';
-import { apiRequest } from './apiRequest';
+import { apiRequest,reloadInfo } from './apiRequest';
 import { styles } from './src/styles/styles';
 // import { apiRequest } from './apiRequest';
 
@@ -48,6 +48,7 @@ export class MyElement extends LitElement {
   searchEvent(event){
     this.searchInfo(event.detail)
     .then(()=> this.dafaultSelection())
+    .then(()=> this.currentPage = 1)
   }
 
   async searchInfo(detail){
@@ -72,6 +73,7 @@ export class MyElement extends LitElement {
     this.gender = this.data[0].gender;
     this.origin = this.data[0].origin;
     this.location = this.data[0].location;
+    
   }
   
   captureButton(event){
@@ -99,17 +101,23 @@ export class MyElement extends LitElement {
 
   capturePrev(){
     // console.log(event)
-    if(this.currentPage > 0){
+    if(this.currentPage > 1){
       this.currentPage = this.currentPage -1;
+      this.changeCurrentPage();
     }
   }
   captureNext(){
     // console.log(event)
-    if(this.currentPage < this.pages){
+    if(this.currentPage <= this.pages){
       this.currentPage = this.currentPage + 1;
+      this.changeCurrentPage();
     }
   }
   
+  async changeCurrentPage(){
+    const info = await reloadInfo(this.word,this.currentPage)
+    this.data = info;
+  }
   render() {
     return html`
       <my-navigator 
