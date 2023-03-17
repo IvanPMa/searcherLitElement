@@ -46,11 +46,11 @@ export class MyElement extends LitElement {
   }
 
   searchEvent(event){
-    this.setWord(event.detail)
+    this.searchInfo(event.detail)
     .then(()=> this.dafaultSelection())
   }
 
-  async setWord(detail){
+  async searchInfo(detail){
     this.word = detail;
     console.log(this.word);
     const [info, totalPages] = await apiRequest(this.word)
