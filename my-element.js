@@ -160,8 +160,8 @@ export class MyElement extends LitElement {
       <my-navigator 
         class="selector"
         .info="${this.data[this.currentPage]}"
-        .pages="${this.pages}"
-        .currentPage="${this.currentPage}"
+        pages="${this.pages}"
+        currentPage="${this.currentPage}"
         @click-button =${this.captureButton}
         @prev-button =${this.capturePrev}
         @next-button =${this.captureNext}
@@ -174,15 +174,15 @@ export class MyElement extends LitElement {
           ></my-search>
           <my-card 
             class= "card"
-            .image="${this.image}"
-            .name="${this.name}"
-            .typeCharacter="${this.typeCharacter}"
-            .id="${this.id}"
-            .specie="${this.specie}"
-            .status="${this.status}"
-            .gender="${this.gender}"
-            .origin="${this.origin}"
-            .location="${this.location}"
+            image="${this.image}"
+            name="${this.name}"
+            typeCharacter="${this.typeCharacter}"
+            id="${this.id}"
+            specie="${this.specie}"
+            status="${this.status}"
+            gender="${this.gender}"
+            origin="${this.origin}"
+            location="${this.location}"
           ></my-card>
       </div>
       
