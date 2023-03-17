@@ -52,10 +52,14 @@ export class MyElement extends LitElement {
   setWord(detail){
     this.word = detail;
     console.log(this.word);
-    this.apiRequest().then(()=>this.setPagination());
+    this.apiRequest()
+    .then(()=> this.dafaultSelection())
+    .then(()=>this.setPagination());
     
     // console.log(this.data);
   }
+
+  
   apiRequest =  async ()=> {
     try {
       const info = [];
@@ -70,17 +74,9 @@ export class MyElement extends LitElement {
         } 
 
         let infoFilter = info.filter( element =>  {
-          return (element.name.toLowerCase().includes(this.word.toLowerCase()) == true)})
-        // Set Default firts selection
+          return (element.name.toLowerCase().includes(this.word.toLowerCase()) == true)
+        })
         this.data = infoFilter;
-        this.image = this.data[0].image;
-        this.name = this.data[0].name;
-        this.typeCharacter = this.data[0].type;
-        this.specie = this.data[0].species;
-        this.status = this.data[0].status;
-        this.gender = this.data[0].gender;
-        this.origin = this.data[0].origin.name;
-        this.location = this.data[0].location.name;
         
       }
         
@@ -91,6 +87,18 @@ export class MyElement extends LitElement {
       console.log('apiRequest Finished')
     }
     
+  }
+
+  dafaultSelection(){
+    // Set Default firts selection
+    this.image = this.data[0].image;
+    this.name = this.data[0].name;
+    this.typeCharacter = this.data[0].type;
+    this.specie = this.data[0].species;
+    this.status = this.data[0].status;
+    this.gender = this.data[0].gender;
+    this.origin = this.data[0].origin.name;
+    this.location = this.data[0].location.name;
   }
   
   captureButton(event){
