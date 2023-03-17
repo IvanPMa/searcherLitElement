@@ -70,8 +70,8 @@ export class MyElement extends LitElement {
     this.specie = this.data[0].species;
     this.status = this.data[0].status;
     this.gender = this.data[0].gender;
-    this.origin = this.data[0].origin.name;
-    this.location = this.data[0].location.name;
+    this.origin = this.data[0].origin;
+    this.location = this.data[0].location;
   }
   
   captureButton(event){
