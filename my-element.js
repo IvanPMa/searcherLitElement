@@ -82,7 +82,7 @@ export class MyElement extends LitElement {
   }
 
   extractSelection(id){
-    let character = this.data[this.currentPage].filter( element =>  {
+    let character = this.data.filter( element =>  {
       return (element.id == id)})
     console.log(character);
     this.image = character[0].image;
