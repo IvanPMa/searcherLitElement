@@ -65,6 +65,7 @@ export class MyElement extends LitElement {
 
   dafaultSelection(){
     // Set Default firts selection
+    this.id = this.data[0].id;
     this.image = this.data[0].image;
     this.name = this.data[0].name;
     this.typeCharacter = this.data[0].type;
@@ -108,7 +109,7 @@ export class MyElement extends LitElement {
   }
   captureNext(){
     // console.log(event)
-    if(this.currentPage <= this.pages){
+    if(this.currentPage < this.pages){
       this.currentPage = this.currentPage + 1;
       this.changeCurrentPage();
     }

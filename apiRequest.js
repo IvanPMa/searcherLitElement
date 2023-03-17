@@ -8,10 +8,10 @@ export const apiRequest =  async (word)=> {
     const info = result.results.map(element =>({
       image: element.image,
       name: element.name,
-      typeCharacter: element.name,
+      type: element.type,
       id: element.id,
-      specie : element.species,
-      status : element.satus,
+      species : element.species,
+      status : element.status,
       gender : element.gender,
       origin : element.origin.name,
       location : element.location.name
@@ -38,10 +38,10 @@ export const reloadInfo = async (word,page) =>{
     const info = result.results.map(element =>({
       image: element.image,
       name: element.name,
-      typeCharacter: element.name,
+      type: element.type,
       id: element.id,
       specie : element.species,
-      status : element.satus,
+      status : element.status,
       gender : element.gender,
       origin : element.origin.name,
       location : element.location.name
