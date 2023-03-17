@@ -140,7 +140,7 @@ export class MyElement extends LitElement {
     return html`
       <my-navigator 
         class="selector"
-        .info="${this.data[this.currentPage]}"
+        .info="${this.data}"
         pages="${this.pages}"
         currentPage="${this.currentPage}"
         @click-button =${this.captureButton}
