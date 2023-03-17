@@ -91,37 +91,11 @@ export class MyElement extends LitElement {
     this.specie = character[0].species;
     this.status = character[0].status;
     this.gender = character[0].gender;
-    this.origin = character[0].origin.name;
-    this.location = character[0].location.name;
+    this.origin = character[0].origin;
+    this.location = character[0].location;
     console.log(this.name)
   }
 
-  setPagination = ()=>{
-    let newInfo = [];
-    let sizePages = Math.ceil(this.data.length / 20);
-    //Create pages
-    for (let i = 0 ; i < sizePages; i++){
-      newInfo.push([])
-    }
-    
-    //Insert Data on pages
-    let counter = 0, flag = 1;
-    for (let i = 0 ; i < this.data.length; i++){
-      newInfo[counter].push(this.data[i]);
-      
-      if (flag === 20){
-        flag = 0;
-        counter ++;
-      }
-
-      flag ++;
-    }
-    this.pages = newInfo.length;
-    this.data = newInfo;
-    console.log(this.pages)
-    console.log(this.data.length);
-    console.log(newInfo);
-  }
 
   capturePrev(){
     // console.log(event)
