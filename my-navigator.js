@@ -53,8 +53,10 @@ export class Navigator extends LitElement {
     else 
       return html`${this.currentPage}`
   }
-  render() {
-    return html`
+
+  showNavigation(){
+    if(this.pages != 0){
+      return html`
       <h2 class="title">Characters</h2>
       <div class="select-section">
         ${this.info.map(
@@ -83,6 +85,12 @@ export class Navigator extends LitElement {
           @click = ${()=> this.nextButton()}
           >></button>
       </div>
+    `;
+    }
+  }
+  render() {
+    return html`
+      ${this.showNavigation()}
     `;
   }
 

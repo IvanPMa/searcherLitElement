@@ -1,17 +1,26 @@
-export const apiRequest =  async (data)=> {
+export const apiRequest =  async (word)=> {
   try {
-    const url = "https://rickandmortyapi.com/api/character";
-    const info = [];
+    
+    const url = `https://rickandmortyapi.com/api/character?name=${word}`;
     const response = await fetch (url);
     const result = await response.json();
 
-    for (let i in result.results) {
-      info.push(result.results[i])
-      
-    } 
-    data = info;
-    console.log(data);
-    return data
+    const info = result.results.map(element =>({
+      image: element.image,
+      name: element.name,
+      typeCharacter: element.name,
+      id: element.id,
+      specie : element.species,
+      status : element.satus,
+      gender : element.gender,
+      origin : element.origin.name,
+      location : element.location.name
+    }))
+
+    const totalPages = result.info.pages;
+    console.log(info)
+    console.log(totalPages)
+    return [info, totalPages];
 
   } catch (e){
     console.error(e)

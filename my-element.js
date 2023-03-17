@@ -1,4 +1,5 @@
 import {LitElement, html} from 'lit';
+import { apiRequest } from './apiRequest';
 import { styles } from './src/styles/styles';
 // import { apiRequest } from './apiRequest';
 
@@ -45,48 +46,20 @@ export class MyElement extends LitElement {
   }
 
   searchEvent(event){
-    this.setWord(event.detail);
-    console.log(event);
+    this.setWord(event.detail)
+    .then(()=> this.dafaultSelection())
   }
 
-  setWord(detail){
+  async setWord(detail){
     this.word = detail;
     console.log(this.word);
-    this.apiRequest()
-    .then(()=> this.dafaultSelection())
-    .then(()=>this.setPagination());
+    const [info, totalPages] = await apiRequest(this.word)
+    this.data = info
+    this.pages = totalPages
+    // .then(()=> this.dafaultSelection())
+    // .then(()=>this.setPagination());
     
     // console.log(this.data);
-  }
-
-  
-  apiRequest =  async ()=> {
-    try {
-      const info = [];
-      for (let i = 1 ; i <= 42 ; i++){
-        const url = "https://rickandmortyapi.com/api/character?page="+i;
-        const response = await fetch (url);
-        const result = await response.json();
-    
-        for (let i in result.results) {
-          info.push(result.results[i])
-          
-        } 
-
-        let infoFilter = info.filter( element =>  {
-          return (element.name.toLowerCase().includes(this.word.toLowerCase()) == true)
-        })
-        this.data = infoFilter;
-        
-      }
-        
-  
-    } catch (e){
-      console.error(e)
-    } finally{
-      console.log('apiRequest Finished')
-    }
-    
   }
 
   dafaultSelection(){
